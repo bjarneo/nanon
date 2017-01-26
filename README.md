@@ -34,6 +34,9 @@ Instead of using arguments in the CLI, nanon fetches config set in `package.json
 
 Example
 --
+Project using nanon
+* [extract-domain](https://github.com/bjarneo/extract-domain)
+
 ```bash
 $ nanon --input index.js --ouput output.bundle.js --name MyLibrary
 $ # Or if you've defined config in package.json
