@@ -1,6 +1,6 @@
 {
   "name": "nanon",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Effortlessly transpile ES6 to ES5 UMD bundle",
   "main": "cli.js",
   "bin": "cli.js",
@@ -26,7 +26,7 @@
     "lodash.merge": "^4.6.0",
     "meow": "^3.7.0",
     "ora": "^1.1.0",
-    "webpack": "next"
+    "webpack": "^2.2.0"
   },
   "devDependencies": {}
 }
