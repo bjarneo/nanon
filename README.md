@@ -18,34 +18,37 @@ $ npm i --save-dev nanon
 ```
     Usage
       $ nanon --input entrypoint.js --output output.bundle.js --name MyLibrary
+      $ # Or 
+      $ nanon entrypoint.js output.bundle.js --name MyLibrary
 
     Options
       --input,       -i         Input ES6 entrypoint
       --output,      -o         Output bundle name
       --name,        -n         Library name
+      --polyfill,    -p         Should polyfill es6 features (defaults to true)
 ```
 
 Instead of using arguments in the CLI, nanon fetches config set in `package.json`
 ```json
   "nanon": {
     "input": "index.js",
-    "name": "MyLibrary",
     "output": "dist/library-name.min.js"
+    "name": "MyLibrary",
   },
 ```
 
 Example
 --
-Project using nanon
+Projects using nanon
 * [extract-domain](https://github.com/bjarneo/extract-domain)
 
 ```bash
-$ nanon --input index.js --ouput output.bundle.js --name MyLibrary
+$ nanon index.js output.bundle.js --name MyLibrary
 $ # Or if you've defined config in package.json
 $ nanon
 ```
 
-Now you can import your code:
+Now you can import your code:  
 CommonJS
 ```js
 const MyLibrary = require('./output.bundle');
