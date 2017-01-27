@@ -2,3 +2,5 @@ node_modules
 npm-debug.log
 *.bundle.js
 yarn-error.log
+example.js
+example.bundle.js
