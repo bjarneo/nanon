@@ -5,7 +5,7 @@ module.exports = function getWebpackConfig(opts) {
     const config = {
         devtool: false,
         entry: {
-            [opts.libraryName]: opts.entrypoint
+            [opts.libraryName]: opts.entry
         },
         output: {
             path: process.cwd(),
@@ -20,7 +20,7 @@ module.exports = function getWebpackConfig(opts) {
                     languageIn: 'ECMASCRIPT6',
                     languageOut: 'ECMASCRIPT5',
                     compilationLevel: 'SIMPLE',
-                    rewritePolyfills: true,
+                    rewritePolyfills: opts.polyfill,
                     createSourceMap: opts.createSourceMap
                 }
             })

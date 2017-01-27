@@ -9,23 +9,25 @@ const webpackConfig = require('./src/webpack-config');
 
 const cli = meow(`
     Usage
-      $ nanon --input entrypoint.js --output output.bundle.js --name my-awesome-library
+      $ nanon entrypoint.js output.bundle.js --name my-awesome-library
 
     Options
-      --config,      -c         Custom webpack config
       --input,       -i         Input ES6 entrypoint
       --output,      -o         Output bundle name
+      --config,      -c         Custom webpack config
       --name,        -n         Library name
+      --polyfill,    -p         Should polyfill es6 features
 
     Examples
       $ nanon --input entrypoint.js --output output.bundle.js --name my-awesome-library
 `, {
     alias: {
-        c: 'config',
         i: 'input',
         o: 'output',
+        c: 'config',
         n: 'name',
-        s: 'sourcemap'
+        s: 'sourcemap',
+        p: 'polyfill'
     }
 });
 
@@ -77,12 +79,16 @@ const config = cli.flags.config ? JSON.parse(cli.flags.config) : {};
 // Validation is needed
 const pkg = JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`, 'utf-8'));
 
+const input = cli.input[0] || cli.flags.input || pkg.nanon.input;
+const output = cli.input[1] || cli.flags.output || pkg.nanon.output;
+
 webpack(
     webpackConfig({
-        entrypoint: `${process.cwd()}/${cli.flags.input || pkg.nanon.input}`,
+        entry: `${process.cwd()}/${input}`,
+        output: output,
         libraryName: cli.flags.name || pkg.nanon.name,
-        output: cli.flags.output || pkg.nanon.output,
-        createSourceMap: cli.flags.sourcemap || pkg.nanon.sourcemap || false
+        createSourceMap: cli.flags.sourcemap || pkg.nanon.sourcemap || false,
+        polyfill: cli.flags.polyfill || pkg.nanon.polyfill || true
     }, config),
     result
 );
