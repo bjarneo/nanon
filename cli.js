@@ -79,16 +79,18 @@ const config = cli.flags.config ? JSON.parse(cli.flags.config) : {};
 // Validation is needed
 const pkg = JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`, 'utf-8'));
 
-const input = cli.input[0] || cli.flags.input || pkg.nanon.input;
-const output = cli.input[1] || cli.flags.output || pkg.nanon.output;
+const pkgConf = pkg.nanon || {};
+
+const input = cli.input[0] || cli.flags.input || pkgConf.input;
+const output = cli.input[1] || cli.flags.output || pkgConf.output;
 
 webpack(
     webpackConfig({
         entry: `${process.cwd()}/${input}`,
         output: output,
-        libraryName: cli.flags.name || pkg.nanon.name,
-        createSourceMap: cli.flags.sourcemap || pkg.nanon.sourcemap || false,
-        polyfill: cli.flags.polyfill || pkg.nanon.polyfill || true
+        libraryName: cli.flags.name || pkgConf.name,
+        createSourceMap: cli.flags.sourcemap || pkgConf.sourcemap || false,
+        polyfill: cli.flags.polyfill || pkgConf.polyfill || true
     }, config),
     result
 );
