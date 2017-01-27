@@ -32,8 +32,8 @@ Instead of using arguments in the CLI, nanon fetches config set in `package.json
 ```json
   "nanon": {
     "input": "index.js",
-    "output": "dist/library-name.min.js"
-    "name": "MyLibrary",
+    "output": "dist/library-name.min.js",
+    "name": "MyLibrary"
   },
 ```
 
