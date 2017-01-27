@@ -4,6 +4,9 @@ With nanon you can effortlessly transpile ES6 to ES5 UMD bundle
 
 This CLI aims to solve my personal UMD bundling. It will transpile ES6 to ES5 and rewrite ES6 library calls to use polyfills provided by the Google Closure Compiler runtime.
 
+Behind the scenes this wrapper uses webpack and google closure compiler.
+
+
 [What is UMD?](https://github.com/umdjs/umd)
 
 Usage
