@@ -25,7 +25,7 @@ $ npm i --save-dev nanon
       --input,       -i         Input ES6 entrypoint
       --output,      -o         Output bundle name
       --name,        -n         Library name
-      --polyfill,    -p         Should polyfill es6 features (defaults to true)
+      --polyfill,    -p         Should polyfill es6 features
 ```
 
 Instead of using arguments in the CLI, nanon fetches config set in `package.json`
