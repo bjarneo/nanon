@@ -74,23 +74,43 @@ function result(err, stats) {
     spinner.succeed('Success!');
 }
 
-const config = cli.flags.config ? JSON.parse(cli.flags.config) : {};
+function getArguments() {
+    // Validation is needed
+    const pkg = JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`, 'utf-8'));
 
-// Validation is needed
-const pkg = JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`, 'utf-8'));
+    const pkgConf = pkg.nanon || {};
 
-const pkgConf = pkg.nanon || {};
+    const createBool = from => {
+        if (
+            !(cli.flags[from] || pkgConf[from]) ||
+            cli.flags[from] === 'false' ||
+            pkgConf[from] === 'false'
+        ) {
+            return false;
+        }
 
-const input = cli.input[0] || cli.flags.input || pkgConf.input;
-const output = cli.input[1] || cli.flags.output || pkgConf.output;
+        return true;
+    };
+
+    return () => ({
+        entry: `${process.cwd()}/${cli.input[0] || cli.flags.input || pkgConf.input}`,
+        output: cli.input[1] || cli.flags.output || pkgConf.output,
+        libraryName: cli.flags.name || pkgConf.name,
+        createSourceMap: createBool('createSourceMap'),
+        polyfill: createBool('polyfill'),
+        config: cli.flags.config ? JSON.parse(cli.flags.config) : {}
+    });
+}
+
+const args = getArguments();
 
 webpack(
     webpackConfig({
-        entry: `${process.cwd()}/${input}`,
-        output: output,
-        libraryName: cli.flags.name || pkgConf.name,
-        createSourceMap: cli.flags.sourcemap || pkgConf.sourcemap || false,
-        polyfill: cli.flags.polyfill || pkgConf.polyfill || true
-    }, config),
+        entry: args().entry,
+        output: args().output,
+        libraryName: args().libraryName,
+        createSourceMap: args().createSourceMap,
+        polyfill: args().polyfill
+    }, args().config),
     result
 );
