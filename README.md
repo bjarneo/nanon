@@ -1,4 +1,4 @@
-With nanon you can effortlessly transpile ES6 to ES5 UMD bundle
+With nanon you can effortlessly transpile ES6 to a ES5 UMD bundle
 --
 
 This CLI aims to solve my personal UMD bundling. It will transpile ES6 to ES5 and rewrite ES6 library calls to use polyfills provided by the Google Closure Compiler runtime.
@@ -17,15 +17,15 @@ $ npm i --save-dev nanon
 
 ```
     Usage
-      $ nanon --input entrypoint.js --output output.bundle.js --name MyLibrary
-      $ # Or 
       $ nanon entrypoint.js output.bundle.js --name MyLibrary
+      $ # Or 
+      $ nanon --input entrypoint.js --output output.bundle.js --name MyLibrary
 
     Options
       --input,       -i         Input ES6 entrypoint
       --output,      -o         Output bundle name
       --name,        -n         Library name
-      --polyfill,    -p         Should polyfill es6 features
+      --polyfill,    -p         Should polyfill es6 features (default false)
 ```
 
 Instead of using arguments in the CLI, nanon fetches config set in `package.json`
