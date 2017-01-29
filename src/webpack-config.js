@@ -1,4 +1,4 @@
-const merge = require('lodash.merge');
+const merge = require('webpack-merge');
 const ClosureCompiler = require('google-closure-compiler-js').webpack;
 
 module.exports = function getWebpackConfig(opts) {
