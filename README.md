@@ -71,6 +71,11 @@ Browser
 MyLibrary.doSomething();
 ```
 
+Inspired by
+--
+* [Roc](https://github.com/rocjs/roc)
+* [Next.js](https://github.com/zeit/next.js)
+
 Contribution
 --
 Contributions are appreciated.
