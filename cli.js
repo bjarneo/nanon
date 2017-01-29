@@ -17,6 +17,7 @@ const cli = meow(`
       --config,      -c         Custom webpack config
       --name,        -n         Library name
       --polyfill,    -p         Should polyfill es6 features
+      --watch,       -w         Turn on watch mode (webpack --watch)
 
     Examples
       $ nanon --input entrypoint.js --output output.bundle.js --name my-awesome-library
@@ -27,7 +28,8 @@ const cli = meow(`
         c: 'config',
         n: 'name',
         s: 'sourcemap',
-        p: 'polyfill'
+        p: 'polyfill',
+        w: 'watch'
     }
 });
 
@@ -98,6 +100,7 @@ function getArguments() {
         libraryName: cli.flags.name || pkgConf.name,
         createSourceMap: createBool('createSourceMap'),
         polyfill: createBool('polyfill'),
+        watch: createBool('watch'),
         config: cli.flags.config ? JSON.parse(cli.flags.config) : {}
     });
 }
@@ -110,7 +113,8 @@ webpack(
         output: args().output,
         libraryName: args().libraryName,
         createSourceMap: args().createSourceMap,
-        polyfill: args().polyfill
+        polyfill: args().polyfill,
+        watch: args().watch
     }, args().config),
     result
 );

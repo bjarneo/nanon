@@ -25,7 +25,8 @@ $ npm i --save-dev nanon
       --input,       -i         Input ES6 entrypoint
       --output,      -o         Output bundle name
       --name,        -n         Library name
-      --polyfill,    -p         Should polyfill es6 features (default false)
+      --polyfill,    -p         Should polyfill es6 features
+      --watch,       -w         Turn on watch mode (webpack --watch)
 ```
 
 Instead of using arguments in the CLI, nanon fetches config set in `package.json`

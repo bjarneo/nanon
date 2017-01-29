@@ -3,6 +3,7 @@ const ClosureCompiler = require('google-closure-compiler-js').webpack;
 
 module.exports = function getWebpackConfig(opts) {
     const config = {
+        watch: opts.watch,
         devtool: false,
         entry: {
             [opts.libraryName]: opts.entry
