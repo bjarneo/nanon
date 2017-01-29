@@ -42,6 +42,7 @@ Example
 --
 Projects using nanon
 * [extract-domain](https://github.com/bjarneo/extract-domain)
+* [instantly](https://github.com/bjarneo/instantly)
 
 ```bash
 $ nanon index.js output.bundle.js --name MyLibrary
