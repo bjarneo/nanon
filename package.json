@@ -1,7 +1,7 @@
 {
   "name": "nanon",
-  "version": "1.0.2",
-  "description": "With nanon you can effortlessly transpile ES6 to ES5 UMD bundle",
+  "version": "1.0.3",
+  "description": "With nanon you can effortlessly transpile ES6 to a ES5 UMD bundle",
   "main": "cli.js",
   "bin": "cli.js",
   "repository": "git@github.com:bjarneo/nanon.git",
