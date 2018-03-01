@@ -36,15 +36,5 @@
     "webpack": "3.11.0",
     "webpack-merge": "^2.6.1"
   },
-  "babel": {
-    "plugins": [
-      [
-        "transform-react-jsx",
-        {
-          "pragma": "h"
-        }
-      ]
-    ]
-  },
   "devDependencies": {}
 }
