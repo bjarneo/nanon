@@ -3,6 +3,31 @@ const merge = require('webpack-merge');
 const ClosureCompiler = require('google-closure-compiler-js').webpack;
 
 module.exports = function getWebpackConfig(opts) {
+    const rules = () => {
+        const list = [];
+
+        const {
+            isReact,
+            isPreact
+        } = opts;
+
+        if (!isReact && !isPreact) {
+            return list;
+        }
+
+        list.push({
+            test: /\.(js|jsx)$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: require.resolve('babel-loader'),
+            options: {
+                presets: isReact ? [require.resolve('babel-preset-react-es2015')] : [],
+                plugins: isPreact ? [[require.resolve('babel-plugin-transform-react-jsx'), { pragma: 'h' }]] : [],
+            }
+        });
+
+        return list;
+    };
+
     const config = {
         watch: opts.watch,
         devtool: false,
@@ -28,23 +53,7 @@ module.exports = function getWebpackConfig(opts) {
             })
         ],
         module: {
-            rules: [
-                {
-                    test: /\.(js|jsx)$/,
-                    exclude: /(node_modules|bower_components)/,
-                    loader: require.resolve('babel-loader'),
-                    options: {
-                        presets: [require.resolve('babel-preset-react-es2015')],
-                        plugins: [[require.resolve('babel-plugin-transform-react-jsx'), { pragma: 'h' }]],
-                    }
-                }
-            ]
-        },
-        resolve: {
-            modules: [
-                path.resolve(__dirname, 'node_modules'),
-                'node_modules'
-            ]
+            rules: rules()
         }
     };
 
