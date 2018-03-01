@@ -20,7 +20,7 @@ module.exports = function getWebpackConfig(opts) {
             exclude: /(node_modules|bower_components)/,
             loader: require.resolve('babel-loader'),
             options: {
-                presets: isReact ? [require.resolve('babel-preset-react-es2015')] : [],
+                presets: isReact || isPreact ? [require.resolve('babel-preset-react-es2015')] : [],
                 plugins: isPreact ? [[require.resolve('babel-plugin-transform-react-jsx'), { pragma: 'h' }]] : [],
             }
         });
