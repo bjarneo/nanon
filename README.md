@@ -22,10 +22,10 @@ $ npm i --save-dev nanon
       $ nanon --input entrypoint.js --output output.bundle.js --name MyLibrary
 
     Options
-      --input,       -i         Input ES6 entrypoint
+      --input,       -i         Input ES6/ES2017 entrypoint
       --output,      -o         Output bundle name
       --name,        -n         Library name
-      --polyfill,    -p         Should polyfill es6 features
+      --polyfill,    -p         Should polyfill ES2017 features
       --watch,       -w         Turn on watch mode (webpack --watch)
 ```
 
