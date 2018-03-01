@@ -1,3 +1,4 @@
+const path = require('path');
 const merge = require('webpack-merge');
 const ClosureCompiler = require('google-closure-compiler-js').webpack;
 
@@ -25,7 +26,25 @@ module.exports = function getWebpackConfig(opts) {
                     createSourceMap: opts.createSourceMap
                 }
             })
-        ]
+        ],
+        module: {
+            rules: [
+                {
+                    test: /\.js$/,
+                    exclude: /(node_modules|bower_components)/,
+                    loader: require.resolve('babel-loader'),
+                    options: {
+                        presets: [require.resolve('babel-preset-react')]
+                    }
+                }
+            ]
+        },
+        resolve: {
+            modules: [
+                path.resolve(__dirname, 'node_modules'),
+                'node_modules'
+            ]
+        }
     };
 
     return merge(config, opts.customConfig || {});

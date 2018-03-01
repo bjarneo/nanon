@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const ora = require('ora');
 const meow = require('meow');
 const webpack = require('webpack');
-const webpackConfig = require('./src/webpack-config');
+const webpackConfig = require('./webpack-config');
 
 const cli = meow(`
     Usage
