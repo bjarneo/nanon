@@ -18,7 +18,7 @@ module.exports = function getWebpackConfig(opts) {
         plugins: [
             new ClosureCompiler({
                 options: {
-                    languageIn: 'ECMASCRIPT6',
+                    languageIn: 'ECMASCRIPT_2017',
                     languageOut: 'ECMASCRIPT5',
                     compilationLevel: 'SIMPLE',
                     rewritePolyfills: opts.polyfill,
