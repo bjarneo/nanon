@@ -1,7 +1,7 @@
 {
   "name": "nanon",
-  "version": "1.2.0",
-  "description": "With nanon you can effortlessly transpile ES6 to a ES5 UMD bundle",
+  "version": "2.0.1",
+  "description": "With nanon you can effortlessly transpile ES6/ES2017 to a ES5 UMD bundle",
   "main": "cli.js",
   "bin": "cli.js",
   "repository": "git@github.com:bjarneo/nanon.git",
@@ -19,14 +19,21 @@
     "es5",
     "umd",
     "bundle",
-    "polyfill"
+    "polyfill",
+    "react",
+    "preact"
   ],
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react-es2015": "^1.3.0",
     "chalk": "^1.1.3",
     "google-closure-compiler-js": "20180204.0.0",
     "meow": "^3.7.0",
     "ora": "^1.1.0",
-    "webpack": "^2.2.0",
+    "webpack": "3.11.0",
     "webpack-merge": "^2.6.1"
   },
   "devDependencies": {}

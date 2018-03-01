@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const ora = require('ora');
 const meow = require('meow');
 const webpack = require('webpack');
-const webpackConfig = require('./src/webpack-config');
+const webpackConfig = require('./webpack-config');
 
 const cli = meow(`
     Usage
@@ -80,6 +80,8 @@ function getArguments() {
     // Validation is needed
     const pkg = JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`, 'utf-8'));
 
+    const dependencies = pkg.dependencies ? Object.keys(pkg.dependencies) : {};
+
     const pkgConf = pkg.nanon || {};
 
     const createBool = from => {
@@ -101,20 +103,15 @@ function getArguments() {
         createSourceMap: createBool('createSourceMap'),
         polyfill: createBool('polyfill'),
         watch: createBool('watch'),
-        config: cli.flags.config ? JSON.parse(cli.flags.config) : {}
+        config: cli.flags.config ? JSON.parse(cli.flags.config) : {},
+        isReact: dependencies.indexOf('react') > -1,
+        isPreact: dependencies.indexOf('preact') > -1
     });
 }
 
 const args = getArguments();
 
 webpack(
-    webpackConfig({
-        entry: args().entry,
-        output: args().output,
-        libraryName: args().libraryName,
-        createSourceMap: args().createSourceMap,
-        polyfill: args().polyfill,
-        watch: args().watch
-    }, args().config),
+    webpackConfig({ ...args() }),
     result
 );

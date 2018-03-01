@@ -3,6 +3,8 @@ With nanon you can effortlessly transpile ES6/ES2017 to a ES5 UMD bundle
 
 This CLI aims to solve my personal UMD bundling. It will transpile ES6/ES2017 to ES5 and rewrite ES6/ES2017 library calls to use polyfills provided by the Google Closure Compiler runtime.
 
+Preact and React is now supported!
+
 Behind the scenes this wrapper uses webpack and google closure compiler.
 
 
@@ -22,10 +24,10 @@ $ npm i --save-dev nanon
       $ nanon --input entrypoint.js --output output.bundle.js --name MyLibrary
 
     Options
-      --input,       -i         Input ES6 entrypoint
+      --input,       -i         Input ES6/ES2017 entrypoint
       --output,      -o         Output bundle name
       --name,        -n         Library name
-      --polyfill,    -p         Should polyfill es6 features
+      --polyfill,    -p         Should polyfill ES2017 features
       --watch,       -w         Turn on watch mode (webpack --watch)
 ```
 
@@ -70,6 +72,53 @@ Browser
 // window.MyLibrary
 MyLibrary.doSomething();
 ```
+
+Example in Preact (same applies for React):
+```js
+// index.js
+import { h, render, Component } from 'preact';
+
+class Clock extends Component {
+    constructor() {
+        super();
+        this.state.time = Date.now();
+    }
+
+    componentDidMount() {
+        this.timer = setInterval(() => {
+            this.setState({ time: Date.now() });
+        }, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer);
+    }
+
+    render(props, state) {
+        let time = new Date(state.time).toLocaleTimeString();
+        return <span>{ time }</span>;
+    }
+}
+
+module.exports = function MyClock() {
+    render(<Clock />, document.getElementById('clock'));
+}
+```
+
+```bash
+$ nanon index.js index.min.js --name=MyClock
+```
+
+Now you can include the bundle and use the clock:
+```html
+<script src="index.min.js"></script>
+<div id="clock"></div>
+<script>
+  MyClock();
+</script>
+``` 
+
+Note: Currently it bundles the react/preact framework. Will make this optional.
 
 Inspired by
 --
