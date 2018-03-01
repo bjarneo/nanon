@@ -30,11 +30,12 @@ module.exports = function getWebpackConfig(opts) {
         module: {
             rules: [
                 {
-                    test: /\.js$/,
+                    test: /\.(js|jsx)$/,
                     exclude: /(node_modules|bower_components)/,
                     loader: require.resolve('babel-loader'),
                     options: {
-                        presets: [require.resolve('babel-preset-react')]
+                        presets: [require.resolve('babel-preset-react-es2015')],
+                        plugins: [[require.resolve('babel-plugin-transform-react-jsx'), { pragma: 'h' }]],
                     }
                 }
             ]
