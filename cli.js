@@ -80,7 +80,7 @@ function getArguments() {
     // Validation is needed
     const pkg = JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`, 'utf-8'));
 
-    const dependencies = pkg.dependencies ? Object.keys(pkg.dependencies) : {};
+    const dependencies = pkg.dependencies ? Object.keys(pkg.dependencies) : [];
 
     const pkgConf = pkg.nanon || {};
 
