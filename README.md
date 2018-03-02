@@ -1,11 +1,9 @@
-With nanon you can effortlessly transpile ES6/ES2017 to a ES5 UMD bundle
+UMD Bundler
 --
 
-This CLI aims to solve my personal UMD bundling. It will transpile ES6/ES2017 to ES5 and rewrite ES6/ES2017 library calls to use polyfills provided by the Google Closure Compiler runtime.
+This CLI aims to solve my personal UMD bundling. It makes it possible to transpile and bundle ES6/ES2017, React, and Preact with ease just by running one command.
 
-Preact and React is now supported!
-
-Behind the scenes this wrapper uses webpack and google closure compiler.
+Behind the scenes this wrapper uses Webpack and Google Closure Compiler.
 
 
 [What is UMD?](https://github.com/umdjs/umd)
@@ -53,6 +51,7 @@ $ nanon
 ```
 
 Now you can import your code:  
+
 CommonJS
 ```js
 const MyLibrary = require('./output.bundle');
@@ -73,7 +72,9 @@ Browser
 MyLibrary.doSomething();
 ```
 
-Example in Preact (same applies for React):
+Preact
+--
+Example creating UMD widgets with Preact (same applies for React):
 ```js
 // index.js
 import { h, render, Component } from 'preact';
@@ -118,7 +119,12 @@ Now you can include the bundle and use the clock:
 </script>
 ``` 
 
-Note: Currently it bundles the react/preact framework. Will make this optional.
+Missing
+--
+
+* Currently it bundles the react/preact framework. Will make this optional.
+* Watch mode is buggy
+* Development mode
 
 Inspired by
 --
