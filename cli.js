@@ -66,7 +66,7 @@ function result(err, stats) {
     const warnLen = output.warnings.length;
 
     if (warnLen) {
-        console.log(chalk.white.bgYellow('Warings:'));
+        console.log(chalk.white.bgYellow('Warnings:'));
 
         for (let i = 0; i < warnLen; i++) {
             console.warn(output.warnings[i]);
