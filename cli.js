@@ -98,8 +98,8 @@ function getArguments() {
 
     return () => ({
         entry: `${process.cwd()}/${cli.input[0] || cli.flags.input || pkgConf.input || pkg.main}`,
-        output: cli.input[1] || cli.flags.output || pkgConf.output,
-        libraryName: cli.flags.name || pkgConf.name,
+        output: cli.input[1] || cli.flags.output || pkgConf.output || pkg.name,
+        libraryName: cli.flags.name || pkgConf.name || pkg.name,
         createSourceMap: createBool('createSourceMap'),
         polyfill: createBool('polyfill'),
         watch: createBool('watch'),
