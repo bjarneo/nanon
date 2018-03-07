@@ -112,6 +112,6 @@ function getArguments() {
 const args = getArguments();
 
 webpack(
-    webpackConfig({ ...args() }),
+    webpackConfig(args()),
     result
 );
