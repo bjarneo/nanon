@@ -5,7 +5,6 @@
 <h1 align="center">
     nanon
 </h1>
----
 
 This bundler aims to solve my personal UMD bundling. It makes it possible to transpile and bundle ES6/ES2017, React, and Preact with ease just by running one command.
 
