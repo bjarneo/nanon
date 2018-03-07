@@ -1,10 +1,15 @@
-UMD Bundler
---
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bjarneo/nanon/master/logo.png" alt="nanon">
+</p>
 
-This CLI aims to solve my personal UMD bundling. It makes it possible to transpile and bundle ES6/ES2017, React, and Preact with ease just by running one command.
+<h1 align="center">
+    nanon
+</h1>
+---
+
+This bundler aims to solve my personal UMD bundling. It makes it possible to transpile and bundle ES6/ES2017, React, and Preact with ease just by running one command.
 
 Behind the scenes this wrapper uses Webpack and Google Closure Compiler.
-
 
 [What is UMD?](https://github.com/umdjs/umd)
 
