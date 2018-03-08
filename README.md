@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bjarneo/nanon/master/logo.png" alt="nanon">
+  <img src="https://raw.githubusercontent.com/bjarneo/nanon/master/logo-white.png" alt="nanon">
 </p>
 
 <h1 align="center">
