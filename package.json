@@ -1,6 +1,6 @@
 {
   "name": "nanon",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "With nanon you can effortlessly transpile ES6/ES2017 to a ES5 UMD bundle",
   "main": "cli.js",
   "bin": "cli.js",
