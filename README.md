@@ -1,3 +1,6 @@
+# THIS PACKAGE IS NOT MAINTAINED
+# NOTE: THIS PACKAGE IS NOT MAINTAINED
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/bjarneo/nanon/master/logo-white.png" alt="nanon">
 </p>
