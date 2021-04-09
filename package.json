@@ -34,7 +34,13 @@
     "meow": "^3.7.0",
     "ora": "^1.1.0",
     "webpack": "3.11.0",
-    "webpack-merge": "^2.6.1"
+    "webpack-merge": "^2.6.1",
+    "snyk": "^1.116.2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
