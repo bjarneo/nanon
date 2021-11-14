@@ -33,7 +33,7 @@
     "google-closure-compiler-js": "20180204.0.0",
     "meow": "^3.7.0",
     "ora": "^1.1.0",
-    "webpack": "3.11.0",
+    "webpack": "4.26.0",
     "webpack-merge": "^2.6.1"
   },
   "devDependencies": {}
